@@ -1,0 +1,41 @@
+<div class="home">
+  <h1>Blog Articles</h1>
+
+  <!-- Formulaire pour publier un nouvel article -->
+  <div class="new-article">
+    <h2>Publish a New Article</h2>
+    <form (ngSubmit)="publishArticle()">
+      <label>
+        Title:
+        <input type="text" [(ngModel)]="newArticle.title" name="title" required />
+      </label>
+      <label>
+        Content:
+        <textarea [(ngModel)]="newArticle.content" name="content" required></textarea>
+      </label>
+      <label>
+        Author:
+        <select [(ngModel)]="newArticle.authorName" name="authorName" required>
+          <option *ngFor="let author of authors" [value]="author.name">
+            {{ author.name }}
+          </option>
+        </select>
+      </label>
+      <button type="submit">Publish</button>
+    </form>
+  </div>
+
+  <!-- Liste des articles groupés par auteur -->
+  <div class="articles">
+    <h2>Articles by Author</h2>
+    <div *ngFor="let author of Object.keys(groupedArticles)">
+      <h3>{{ author }}</h3>
+      <ul>
+        <li *ngFor="let article of groupedArticles[author]">
+          <h4>{{ article.title }}</h4>
+          <p>{{ article.content }}</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
