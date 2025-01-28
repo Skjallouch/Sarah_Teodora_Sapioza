@@ -3,7 +3,7 @@ import { Author, AuthorService } from '../../../authors/services/author.service'
 import { BlogArticle } from '../../models/blog-article.model';
 import { BlogArticleService } from '../../services/blog-article.service';
 import { FormsModule } from '@angular/forms';
-import { NgForOf } from '@angular/common';
+import {NgForOf, NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -11,19 +11,26 @@ import { NgForOf } from '@angular/common';
   styleUrls: ['./home.component.css'],
   imports: [
     FormsModule,
-    NgForOf // Pas besoin de HttpClientModule ici
+    NgForOf,
+    NgIf,
+    // Pas besoin de HttpClientModule ici
   ]
 })
 export class HomeComponent implements OnInit {
   articles: BlogArticle[] = [];
   groupedArticles: { [authorName: string]: BlogArticle[] } = {};
   authors: Author[] = [];
+  showForm: boolean = false;
   newArticle: BlogArticle = {
     title: '',
     content: '',
     authorName: '',
     isRead: [],
   };
+
+  toggleForm() {
+    this.showForm = !this.showForm;
+  }
 
   constructor(
     private blogArticleService: BlogArticleService,

@@ -1,41 +1,56 @@
-<div class="home">
-  <h1>Blog Articles</h1>
+<div class="home-container">
+  <!-- Header -->
+  <header class="header">
+    <h1 class="text-center">Sapioza</h1>
+  </header>
 
-  <!-- Formulaire pour publier un nouvel article -->
-  <div class="new-article">
-    <h2>Publish a New Article</h2>
-    <form (ngSubmit)="publishArticle()">
-      <label>
-        Title:
-        <input type="text" [(ngModel)]="newArticle.title" name="title" required />
-      </label>
-      <label>
-        Content:
-        <textarea [(ngModel)]="newArticle.content" name="content" required></textarea>
-      </label>
-      <label>
-        Author:
-        <select [(ngModel)]="newArticle.authorName" name="authorName" required>
-          <option *ngFor="let author of authors" [value]="author.name">
-            {{ author.name }}
-          </option>
-        </select>
-      </label>
-      <button type="submit">Publish</button>
-    </form>
+  <!-- Bouton pour afficher le formulaire -->
+  <div class="form-button-container">
+    <button class="form-toggle-btn" (click)="toggleForm()">
+      <img src="assets/icons/ecrire.png" alt="Add" class="icon" />
+
+    </button>
   </div>
 
-  <!-- Liste des articles groupés par auteur -->
-  <div class="articles">
-    <h2>Articles by Author</h2>
-    <div *ngFor="let author of Object.keys(groupedArticles)">
-      <h3>{{ author }}</h3>
-      <ul>
-        <li *ngFor="let article of groupedArticles[author]">
-          <h4>{{ article.title }}</h4>
-          <p>{{ article.content }}</p>
-        </li>
-      </ul>
+  <!-- Formulaire pour publier un article -->
+  <div class="form-container" *ngIf="showForm">
+    <div class="form-card">
+      <h2 class="form-title">Publish a New Article</h2>
+      <form (ngSubmit)="publishArticle()">
+        <label class="form-label">
+          Title:
+          <input type="text" [(ngModel)]="newArticle.title" name="title" required />
+        </label>
+        <label class="form-label">
+          Content:
+          <textarea [(ngModel)]="newArticle.content" name="content" required></textarea>
+        </label>
+        <label class="form-label">
+          Author:
+          <select [(ngModel)]="newArticle.authorName" name="authorName" required>
+            <option *ngFor="let author of authors" [value]="author.name">
+              {{ author.name }}
+            </option>
+          </select>
+        </label>
+        <button type="submit" class="submit-btn">Publish</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Feed des articles -->
+  <div class="articles-feed">
+    <h2 class="feed-title">Latest Articles</h2>
+    <div class="feed-card">
+      <div *ngFor="let author of Object.keys(groupedArticles)" class="author-articles">
+        <h3 class="author-name">{{ author }}</h3>
+        <ul class="article-list">
+          <li *ngFor="let article of groupedArticles[author]" class="article-item">
+            <h4 class="article-title">{{ article.title }}</h4>
+            <p class="article-content">{{ article.content }}</p>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
