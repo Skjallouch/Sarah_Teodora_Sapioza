@@ -1,9 +1,11 @@
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './features/blog/pages/home/home.component';
 import {NgModule} from '@angular/core';
+import {ConnexionComponent} from './features/blog/pages/connexion/connexion.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent }, // Utilisation directe
+  { path: 'login', component: ConnexionComponent},
   { path: '**', redirectTo: '' }
 ];
 

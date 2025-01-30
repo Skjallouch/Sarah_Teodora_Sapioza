@@ -1,3 +1,33 @@
-<footer>
-  <p>&copy; 2025 Blog App. All rights reserved.</p>
+<!-- src/app/footer/footer.component.html -->
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h4>MonSite</h4>
+      <p>Votre source de contenu de qualité.</p>
+    </div>
+
+    <div class="footer-section">
+      <h4>Liens rapides</h4>
+      <ul>
+        <li><a routerLink="/about" class="footer-link">À propos</a></li>
+        <li><a routerLink="/contact" class="footer-link">Contact</a></li>
+      </ul>
+    </div>
+<!--
+    <div class="footer-section">
+      <h4>Suivez-nous</h4>
+      <div class="social-links">
+        <a href="https://www.facebook.com" target="_blank" class="social-icon">Facebook</a>
+        <a href="https://twitter.com" target="_blank" class="social-icon">Twitter</a>
+        <a href="https://www.instagram.com" target="_blank" class="social-icon">Instagram</a>
+      </div>
+    </div>
+   -->
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; {{ currentYear }} MonSite. Tous droits réservés.</p>
+  </div>
 </footer>
+
+

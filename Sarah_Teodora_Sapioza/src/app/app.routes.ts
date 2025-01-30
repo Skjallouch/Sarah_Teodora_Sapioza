@@ -1,15 +1,14 @@
-//import { Routes } from '@angular/router';
-
-//export const routes: Routes = [];
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module'; // Importez ici
-import { AppComponent } from './app.component';
-import { HomeComponent } from './features/blog/pages/home/home.component'; // Importez vos composants ici
-
+// src/app/app.routes.ts
 import { Routes } from '@angular/router';
+import { HomeComponent } from './features/blog/pages/home/home.component';  // Ton composant Home
+import { ConnexionComponent } from './features/blog/pages/connexion/connexion.component';
+import {InscriptionComponent} from './features/blog/pages/inscription/inscription.component';  // Ton composant Connexion
 
+// Configuration des routes
 export const routes: Routes = [
-  { path: '', component: HomeComponent }, // Page d'accueil
-  { path: '**', redirectTo: '' } // Redirection pour les routes inconnues
+  { path: '', component: HomeComponent },  // Page d'accueil
+  { path: 'login', component: ConnexionComponent },  // Route de la page de connexion
+  { path: 'register', component: InscriptionComponent },
+  { path: '**', redirectTo: '' }         // Redirection pour les routes inconnues
 ];
+

@@ -1,0 +1,38 @@
+<!-- src/app/features/blog/pages/inscription/inscription.component.html -->
+<div class="inscription-container">
+  <div class="inscription-form">
+    <h2>Créer un compte</h2>
+
+    <form (ngSubmit)="inscription()">
+      <div class="form-group">
+        <label for="name">Nom</label>
+        <input type="text" id="name" [(ngModel)]="name" name="name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" [(ngModel)]="email" name="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Mot de passe</label>
+        <input type="password" id="password" [(ngModel)]="password" name="password" required>
+      </div>
+
+      <div class="form-group">
+        <label for="confirmPassword">Confirmer le mot de passe</label>
+        <input type="password" id="confirmPassword" [(ngModel)]="confirmPassword" name="confirmPassword" required>
+      </div>
+
+      <div *ngIf="errorMessage" class="error-message">
+        <p>{{ errorMessage }}</p>
+      </div>
+
+      <button type="submit" class="inscription-button">S'inscrire</button>
+    </form>
+
+    <p class="login-link">
+      Déjà un compte ? <a href="/login">Se connecter</a>
+    </p>
+  </div>
+</div>
