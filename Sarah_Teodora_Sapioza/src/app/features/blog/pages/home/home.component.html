@@ -7,50 +7,67 @@
   <!-- Bouton pour afficher le formulaire -->
   <div class="form-button-container">
     <button class="form-toggle-btn" (click)="toggleForm()">
-      <img src="assets/icons/ecrire.png" alt="Add" class="icon" />
-
+      <img src="/ecrire.png" alt="Add" class="icon" />
+      Ajouter un article
     </button>
   </div>
 
-  <!-- Formulaire pour publier un article -->
-  <div class="form-container" *ngIf="showForm">
+  <!-- Formulaire de publication -->
+  <!-- Formulaire de publication (Toujours affiché, géré en CSS) -->
+  <div class="form-container" id="publication-form">
     <div class="form-card">
-      <h2 class="form-title">Publish a New Article</h2>
+      <h2 class="form-title">Publier un nouvel article</h2>
       <form (ngSubmit)="publishArticle()">
         <label class="form-label">
-          Title:
+          Titre :
           <input type="text" [(ngModel)]="newArticle.title" name="title" required />
         </label>
         <label class="form-label">
-          Content:
-          <textarea [(ngModel)]="newArticle.content" name="content" required></textarea>
+          ID de l'auteur :
+          <input type="number" [(ngModel)]="newArticle.authorId" name="authorId" required />
         </label>
         <label class="form-label">
-          Author:
-          <select [(ngModel)]="newArticle.authorName" name="authorName" required>
-            <option *ngFor="let author of authors" [value]="author.name">
-              {{ author.name }}
-            </option>
-          </select>
+          field :
+          <input type="text" [(ngModel)]="newArticle.field" name="field" required />
         </label>
-        <button type="submit" class="submit-btn">Publish</button>
+        <label class="form-label">
+          Journal :
+          <input type="text" [(ngModel)]="newArticle.publishedIn" name="publishedIn" required />
+        </label>
+        <label class="form-label">
+          Mots clés :
+          <input type="text" [(ngModel)]="newArticle.keywords" name="keywords" required />
+        </label>
+        <label class="form-label">
+          Abstract :
+          <input type="text" [(ngModel)]="newArticle.abstract" name="abstract" required />
+        </label>
+        <label class="form-label">
+          DOI :
+          <input type="text" [(ngModel)]="newArticle.DOI" name="DOI" required />
+        </label>
+        <button type="submit" class="submit-btn">Publier</button>
       </form>
     </div>
   </div>
 
-  <!-- Feed des articles -->
+
+  <!-- Affichage des articles -->
+  <!-- Affichage des articles -->
   <div class="articles-feed">
-    <h2 class="feed-title">Latest Articles</h2>
+    <h2 class="feed-title">Articles récents</h2>
     <div class="feed-card">
-      <div *ngFor="let author of Object.keys(groupedArticles)" class="author-articles">
-        <h3 class="author-name">{{ author }}</h3>
+      <div *ngFor="let article of articles; trackBy: trackById" class="author-articles">
+        <h3 class="author-name">{{ article.authorName }}</h3>
         <ul class="article-list">
-          <li *ngFor="let article of groupedArticles[author]" class="article-item">
+          <li class="article-item">
             <h4 class="article-title">{{ article.title }}</h4>
-            <p class="article-content">{{ article.content }}</p>
+            <p class="article-content">{{ article.abstract }}</p>
           </li>
         </ul>
       </div>
     </div>
   </div>
+
+
 </div>
