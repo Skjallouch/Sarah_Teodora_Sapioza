@@ -1,14 +1,12 @@
 export interface SendPaper {
-  metaData: {
-    title: string;
-    authorId: string;
-    field: string;
-    publishedIn: string;
-    keywords: string;
-    abstract: string;
-    DOI: string;
-  }
-  body :{
-    content: string;
-  }
+  "metaData": {
+    "title": string,
+    "authorId": number
+    "field": string,
+    "publishedIn": string,
+    "keywords": string,
+    "abstract_": string,
+    "DOI": string
+  },
+  "body" : string
 }

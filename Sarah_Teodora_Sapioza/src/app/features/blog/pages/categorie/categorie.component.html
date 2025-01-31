@@ -1,0 +1,21 @@
+<h1>hello</h1>
+<div class="categories-container">
+  <h2>Catégories de Recherche</h2>
+
+  <!-- Sélection des catégories -->
+  <div class="filters">
+    <label for="categories">Sélectionnez une ou plusieurs catégories :</label>
+    <select id="categories" multiple [(ngModel)]="selectedFields">
+      <option *ngFor="let field of researchFields" [value]="field">{{ field }}</option>
+    </select>
+  </div>
+
+  <button (click)="sortByDate()">Trier par date</button>
+
+  <h3>Articles Disponibles</h3>
+  <ul>
+    <li *ngFor="let article of getFilteredArticles()">
+      <strong>{{ article.title }}</strong> - {{ article.field }} ({{ article.date }})
+    </li>
+  </ul>
+</div>

@@ -1,6 +1,6 @@
 {
   "/papers": {
-    "target": "http://51.178.59.232:8082",
+    "target": "http://51.178.59.232:8082/papers",
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug"
